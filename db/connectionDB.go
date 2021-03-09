@@ -7,8 +7,8 @@ import (
 	"log"
 )
 
-const userMongoDb string = ""
-const passMongoDb string = ""
+const userMongoDb string = "twittor_user"
+const passMongoDb string = "TestUser123"
 
 var MongoConnect = connectDB()
 var clientOptions = options.Client().ApplyURI("mongodb+srv://" + userMongoDb + ":" + passMongoDb + "@twittor.blv2u.mongodb.net/test")
