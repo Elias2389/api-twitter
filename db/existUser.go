@@ -8,14 +8,13 @@ import (
 )
 
 func CheckUserExist(email string) (model.User, bool, string) {
-	ctx, cancel := context.WithTimeout(context.Background(), 15 * time.Second)
+	ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
 	defer cancel()
 
 	db := MongoConnect.Database("twittor")
 	col := db.Collection("user")
 
-	condition := bson.M{ "email": email }
-
+	condition := bson.M{"email": email}
 
 	var result model.User
 	err := col.FindOne(ctx, condition).Decode(&result)
@@ -27,5 +26,3 @@ func CheckUserExist(email string) (model.User, bool, string) {
 
 	return result, true, ID
 }
-
-
